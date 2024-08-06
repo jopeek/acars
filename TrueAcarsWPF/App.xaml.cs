@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace GeesWPF
+namespace TrueAcarsWPF
 {
     /// <summary>
     /// Interaction logic for App.xaml

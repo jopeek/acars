@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Forms;
 
-namespace GeesWPF
+namespace TrueAcarsWPF
 {
     public class ViewModel : INotifyPropertyChanged
     {
@@ -142,7 +142,7 @@ namespace GeesWPF
         {
             public string Name { get; set; }
             public int FPM { get; set; }
-            public double Gees { get; set; }
+            public double TrueAcars { get; set; }
             public double Airspeed { get; set; }
             public double Groundspeed { get; set; }
             public double Headwind { get; set; }
@@ -156,7 +156,7 @@ namespace GeesWPF
         {
             Name = null,
             FPM = -125,
-            Gees = 1.22,
+            TrueAcars = 1.22,
             Airspeed = 65,
             Groundspeed = 63,
             Headwind = -7,
@@ -183,7 +183,7 @@ namespace GeesWPF
                 Time = DateTime.Now,
                 Plane = _lastLandingParams.Name,
                 Fpm = _lastLandingParams.FPM,
-                G = _lastLandingParams.Gees,
+                G = _lastLandingParams.TrueAcars,
                 AirV = _lastLandingParams.Airspeed,
                 GroundV = _lastLandingParams.Groundspeed,
                 HeadV = _lastLandingParams.Headwind,
@@ -199,23 +199,23 @@ namespace GeesWPF
         {
             get { return _lastLandingParams.FPM.ToString("0 fpm"); }
         }
-        public string GeesText
+        public string TrueAcarsText
         {
-            get { return _lastLandingParams.Gees.ToString("0.## G"); }
+            get { return _lastLandingParams.TrueAcars.ToString("0.## G"); }
         }
-        public string GeesImage
+        public string TrueAcarsImage
         {
             get
             {
-                if (_lastLandingParams.Gees < 1.2)
+                if (_lastLandingParams.TrueAcars < 1.2)
                 {
                     return "/Images/smile.png";
                 }
-                else if (_lastLandingParams.Gees < 1.4)
+                else if (_lastLandingParams.TrueAcars < 1.4)
                 {
                     return "/Images/meh.png";
                 }
-                else if (_lastLandingParams.Gees < 1.8)
+                else if (_lastLandingParams.TrueAcars < 1.8)
                 {
                     return "/Images/frown.png";
                 }

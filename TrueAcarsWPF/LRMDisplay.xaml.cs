@@ -17,7 +17,7 @@ using System.Threading;
 using System.Windows.Threading;
 using System.Windows.Interop;
 
-namespace GeesWPF
+namespace TrueAcarsWPF
 {
     /// <summary>
     /// Interaction logic for LRMDisplay.xaml

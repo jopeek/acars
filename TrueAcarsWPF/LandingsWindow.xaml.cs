@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace GeesWPF
+namespace TrueAcarsWPF
 {
     public partial class LandingsWindow : Window
     {
@@ -33,7 +33,7 @@ namespace GeesWPF
         private void button_Click(object sender, RoutedEventArgs e)
         {
             string myDocs = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string path = myDocs + @"\MyMSFS2020Landings-Gees";
+            string path = myDocs + @"\MyMSFS2020Landings-TrueAcars";
             Process.Start(path);
         }
     }

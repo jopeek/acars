@@ -10,7 +10,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
 
-namespace GeesWPF
+namespace TrueAcarsWPF
 {
     public class LandingLogger
     {
@@ -42,8 +42,8 @@ namespace GeesWPF
         {
             //const string header = "Time,Plane,FPM,Impact (G),Air Speed (kt),Ground Speed (kt),Headwind (kt),Crosswind (kt),Sideslip (deg)";
             string myDocs = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            Directory.CreateDirectory(myDocs + @"\MyMSFS2020Landings-Gees"); //create if doesn't exist
-            string path = myDocs + @"\MyMSFS2020Landings-Gees\Landings.v3.csv";
+            Directory.CreateDirectory(myDocs + @"\MyMSFS2020Landings-TrueAcars"); //create if doesn't exist
+            string path = myDocs + @"\MyMSFS2020Landings-TrueAcars\Landings.v3.csv";
             if (!File.Exists(path))
             {
                 using (var writer = new StreamWriter(path))

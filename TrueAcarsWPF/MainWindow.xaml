@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GeesWPF"
-        xmlns:properties="clr-namespace:GeesWPF.Properties"
-        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="GeesWPF.MainWindow"
+        xmlns:local="clr-namespace:TrueAcarsWPF"
+        xmlns:properties="clr-namespace:TrueAcarsWPF.Properties"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="TrueAcarsWPF.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="490.8" Width="343.2" ResizeMode="NoResize" Background="#FF1D3557" Deactivated="Window_Deactivated" Topmost="True" WindowStyle="None" ShowInTaskbar="False">
     <Window.Resources>
@@ -29,19 +29,12 @@
         </Style>
     </Window.Resources>
     <Grid Margin="0,0,-0.2,0">
-        <Label x:Name="title" Content="Gees" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="20"/>
+        <Label x:Name="title" Content="TrueAcars" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="20"/>
         <Button x:Name="button" Content="Quit" HorizontalAlignment="Left" Margin="258,13,0,0" VerticalAlignment="Top" Width="75" Foreground="#FFF1FAEE" Height="37" Click="button_Click" Style="{DynamicResource DarkButton}"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="13,73,0,0" TextWrapping="Wrap" Text="In game landing analysis for Microsoft Flight Simulator 2020" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="16" Width="320">
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="13,73,0,0" TextWrapping="Wrap" Text="ACARS application for Microsoft Flight Simulator" VerticalAlignment="Top" Foreground="#FFF1FAEE" FontSize="16" Width="320">
 
         </TextBlock>
         <Label x:Name="versionLabel" Content="{Binding Version}" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Foreground="#FFF1FAEE" RenderTransformOrigin="0.783,1.633"/>
-        <GroupBox x:Name="groupBox" Header="Community" HorizontalAlignment="Left" Height="80" Margin="10,145,0,0" VerticalAlignment="Top" Width="323" Foreground="#FFF1FAEE" Grid.ColumnSpan="2">
-            <Grid HorizontalAlignment="Left" Height="40" Margin="10,10,-1.8,0" Width="290" VerticalAlignment="Top">
-                <Image x:Name="githubLink" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="32" Source="Images/github.png" Cursor="Hand" RenderTransformOrigin="1.109,3.678" MouseDown="githubLink_MouseDown"/>
-                <Image x:Name="redditLink_Copy" HorizontalAlignment="Left" Height="32" Margin="41,0,0,0" VerticalAlignment="Top" Width="32" Source="Images/reddit.png" Cursor="Hand" MouseDown="redditLink_MouseDown" RenderTransformOrigin="2.15,0.4"/>
-                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="201,308,-17,-289" TextWrapping="Wrap" Text="Gees | Icons ©FontAwesome" VerticalAlignment="Top" Width="106" FontSize="8"/>
-            </Grid>
-        </GroupBox>
         <GroupBox x:Name="groupBox_Copy" Header="Slider Settings" HorizontalAlignment="Left" Height="80" Margin="10,230,0,0" VerticalAlignment="Top" Width="323" Foreground="#FFF1FAEE">
             <Grid HorizontalAlignment="Left" Height="40" Margin="10,10,-1.8,0" Width="290" VerticalAlignment="Top">
                 <Button x:Name="buttonTest" Content="Test" HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Height="32" Background="#FFA8DADC" Foreground="#FF1D3557" Click="buttonTest_Click" Margin="242,2,-3,0"/>

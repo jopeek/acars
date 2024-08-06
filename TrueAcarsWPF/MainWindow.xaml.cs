@@ -28,7 +28,7 @@ using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 
 
 
-namespace GeesWPF
+namespace TrueAcarsWPF
 {
     public enum Requests
     {
@@ -91,10 +91,10 @@ namespace GeesWPF
         public MainWindow()
         {
             bool createdNew = true;
-            mutex = new Mutex(true, "Gees", out createdNew);
+            mutex = new Mutex(true, "TrueAcars", out createdNew);
             if (!createdNew)
             {
-                System.Windows.MessageBox.Show("App is already running.\nCheck your system tray.", "Gees", MessageBoxButton.OK, MessageBoxImage.Information);
+                System.Windows.MessageBox.Show("App is already running.\nCheck your system tray.", "TrueAcars", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
                 return;
             }
@@ -227,31 +227,31 @@ namespace GeesWPF
                 double fpm = 60 * Onground.ElementAt(0).LandingRate;
                 Int32 FPM = Convert.ToInt32(-fpm);
 
-                double gees = 0;
+                double TrueAcars = 0;
                 //int Gforcemeterlen = 100 / SAMPLE_RATE; // take 100ms average for G force
                 for (int i = 0; i < BUFFER_SIZE; i++)
                 {
-                    if (Onground.ElementAt(i).Gforce > gees)
+                    if (Onground.ElementAt(i).Gforce > TrueAcars)
                     {
-                        gees = Onground.ElementAt(i).Gforce;
+                        TrueAcars = Onground.ElementAt(i).Gforce;
                     }
-                    /*gees += Onground.ElementAt(i).Gforce;
+                    /*TrueAcars += Onground.ElementAt(i).Gforce;
                     Console.WriteLine(Onground.ElementAt(i).Gforce);*/
                 }
-               // gees /= BUFFER_SIZE;*/
-              //  gees += Onground.ElementAt(0).Gforce;
+               // TrueAcars /= BUFFER_SIZE;*/
+              //  TrueAcars += Onground.ElementAt(0).Gforce;
 
 
                 double incAngle = Math.Atan(Inair.Last().LateralSpeed / Inair.Last().ForwardSpeed) * 180 / Math.PI;
 
                 if (bounces == 0)
                 {
-                    // EnterLog(Inair.First().Type, FPM, gees, Inair.Last().AirspeedInd, Inair.Last().GroundSpeed, Inair.Last().WindHead, Inair.Last().WindLat, incAngle);
+                    // EnterLog(Inair.First().Type, FPM, TrueAcars, Inair.Last().AirspeedInd, Inair.Last().GroundSpeed, Inair.Last().WindHead, Inair.Last().WindLat, incAngle);
                     viewModel.SetParams(new ViewModel.Parameters
                     {
                         Name = Inair.First().Type,
                         FPM = FPM,
-                        Gees = Math.Round(gees, 2),
+                        TrueAcars = Math.Round(TrueAcars, 2),
                         Airspeed = Math.Round(Inair.Last().AirspeedInd, 2),
                         Groundspeed = Math.Round(Inair.Last().GroundSpeed, 2),
                         Crosswind = Math.Round(Inair.Last().WindLat, 2),
@@ -267,7 +267,7 @@ namespace GeesWPF
                     viewModel.BounceParams();
                 }
                 // viewModel.UpdateTable();
-                //LRMDisplay form = new LRMDisplay(FPM, gees, Inair.Last().AirspeedInd, Inair.Last().GroundSpeed, Inair.Last().WindHead, Inair.Last().WindLat, incAngle);
+                //LRMDisplay form = new LRMDisplay(FPM, TrueAcars, Inair.Last().AirspeedInd, Inair.Last().GroundSpeed, Inair.Last().WindHead, Inair.Last().WindLat, incAngle);
                 //form.Show();
                 Inair.Clear();
                 Onground.Clear();
@@ -339,7 +339,7 @@ namespace GeesWPF
         }
         private void githubLink_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("https://github.com/scelts/gees");
+            Process.Start("https://github.com/scelts/TrueAcars");
         }
         private void buttonUpdate_Click(object sender, RoutedEventArgs e)
         {
@@ -393,8 +393,8 @@ namespace GeesWPF
             string ls = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator;
             const string header = "Time,Plane,FPM,Impact (G),Air Speed (kt),Ground Speed (kt),Headwind (kt),Crosswind (kt),Sideslip (deg)";
             string myDocs = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            Directory.CreateDirectory(myDocs + @"\MyMSFS2020Landings-Gees"); //create if doesn't exist
-            string path = myDocs + @"\MyMSFS2020Landings-Gees\Landings.v1.csv";
+            Directory.CreateDirectory(myDocs + @"\MyMSFS2020Landings-TrueAcars"); //create if doesn't exist
+            string path = myDocs + @"\MyMSFS2020Landings-TrueAcars\Landings.v1.csv";
             if (!File.Exists(path))
             {
                 using (StreamWriter w = File.CreateText(path))
@@ -408,7 +408,7 @@ namespace GeesWPF
 
             MakeLogIfEmpty();
             string myDocs = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string path = myDocs + @"\MyMSFS2020Landings-Gees\Landings.v1.csv";
+            string path = myDocs + @"\MyMSFS2020Landings-TrueAcars\Landings.v1.csv";
             using (StreamWriter w = File.AppendText(path))
             {
                 string logLine = DateTime.Now.ToString("G") + ",";
@@ -448,11 +448,14 @@ namespace GeesWPF
         #region Updater
         private void backgroundWorkerUpdate_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            var client = new GitHubClient(new ProductHeaderValue("Gees"));
-            var releases = client.Repository.Release.GetAll("scelts", "gees").Result;
-            var latest = releases[0];
-            viewModel.Updatable = viewModel.Version != latest.TagName;
-            updateUri = latest.HtmlUrl;
+            var client = new GitHubClient(new ProductHeaderValue("TrueAcars"));
+            var releases = client.Repository.Release.GetAll("jopeek", "Acars").Result;
+            if (releases.Any())
+            {
+                var latest = releases[0];
+                viewModel.Updatable = viewModel.Version != latest.TagName;
+                updateUri = latest.HtmlUrl;
+            }
         }
 
         #endregion
